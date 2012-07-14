@@ -30,7 +30,7 @@ module MNE
           label_opts = opts ? opts[:label] : []
 
           # If label is false, we're rendering the field without modification
-          return super (field, *args) if label_opts === false
+          return super(field, *args) if label_opts === false
 
           label_opts = Array[label_opts] << { :class => "control-label" }
 
