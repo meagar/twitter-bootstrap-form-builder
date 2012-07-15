@@ -1,6 +1,7 @@
 # Twitter::Bootstrap::Form::Builder
 
-TODO: Write a gem description
+A gem for building **horzontal** Twitter Bootstrap forms, automagically handling the
+control-group markup, field labels and inline-error messages.
 
 ## Installation
 
@@ -16,6 +17,33 @@ Or install it yourself as:
 
     $ gem install twitter-bootstrap-form-builder
 
+## QuickStart
+
+### app/helpers/application_helper.rb
+
+    module ApplicationHelper
+      # Replace form_for
+      include MNE::TwitterBootstrapFormBuilder
+    end
+
+
+### Using the form builder
+
+    # Labels and control-group markup are handled by the form builder
+    
+    <%= form_for @post do |f| %>
+      <%= f.text_field :topic %>
+      <%= f.text_area :body %>
+      <div class="form-actions">
+        <%= f.submit "Create Post" %>
+      </div>
+    <% end %>
+
+### Rendering just some fields:
+
+    <%= fields_for @post, :builder => MNE::TwitterBootstrapFormBuilder::FormBuilder do |f| %>
+      ....
+    
 ## Usage
 
 Twitter Bootstrap FormBuilder is designed to output all the markup required to build **horzontal** forms,
