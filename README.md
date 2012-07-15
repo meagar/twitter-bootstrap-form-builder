@@ -1,4 +1,4 @@
-# TwitterBootstra:FormBuilder
+# TwitterBootstrapFormBuilder
 
 A gem for building **horzontal** (vertial/search/inline coming soon) Twitter Bootstrap forms, automagically handling the
 control-group markup, field labels and inline-error messages.
