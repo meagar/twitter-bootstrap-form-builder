@@ -22,7 +22,7 @@ module MNE
         end
       end
 
-      %w(text_field phone_field password_field email_field number_field file_field text_area select).each do |method_name|
+      %w(text_field phone_field password_field email_field number_field file_field text_area select check_box).each do |method_name|
         define_method method_name.to_sym do |field, *args|
 
           # extract the options for the label tag
