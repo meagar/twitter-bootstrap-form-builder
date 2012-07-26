@@ -43,7 +43,6 @@ module MNE
           
           label_opts = Array[label_opts] << { :class => "control-label" }
 
-          # {:class => "foo"}
           control_group(field, control_group_opts) do
             label(field, *label_opts) + @template.content_tag(:div, :class => "controls") do
               super(field, *args) + help_block + errors_for(field)
@@ -54,8 +53,8 @@ module MNE
       end
 
       def errors_for(field)
-        @template.content_tag(:p, "#{object.class.human_attribute_name(field)} #{object.errors.messages[field].join(",")}",
-                              :class => "help-block") if object.errors.messages[field].any?
+        @template.content_tag(:span, "#{object.class.human_attribute_name(field)} #{object.errors.messages[field].join(",")}",
+                              :class => "help-inline") if object.errors.messages[field].any?
       end
 
     end
