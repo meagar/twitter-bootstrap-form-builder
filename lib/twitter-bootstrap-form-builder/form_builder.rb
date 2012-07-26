@@ -28,7 +28,8 @@ module MNE
           # extract the options for the label tag
           opts = args.find { |a| a.is_a?(Hash) && a.has_key?(:label) }
           label_opts = opts ? opts[:label] : []
-          help_block = opts && opts[:help_block] ? @template.content_tag(:p, opts[:help_block], :class => "help-block") : ""
+          help_opts = args.find { |a| a.is_a?(Hash) && a.has_key?(:help_block) }
+          help_block = help_opts && help_opts[:help_block] ? @template.content_tag(:p, help_opts[:help_block], :class => "help-block") : ""
           
           # If label is false, we're rendering the field without modification
           return super(field, *args) if label_opts === false
