@@ -28,7 +28,8 @@ module MNE
           # extract the options for the label tag
           opts = args.find { |a| a.is_a?(Hash) && a.has_key?(:label) }
           label_opts = opts ? opts[:label] : []
-
+          help_block = opts && opts[:help_block] ? @template.content_tag(:p, opts[:help_block], :class => "help-block") : ""
+          
           # If label is false, we're rendering the field without modification
           return super(field, *args) if label_opts === false
 
@@ -36,7 +37,7 @@ module MNE
 
           control_group(field, :class => "#{method_name}") do
             label(field, *label_opts) + @template.content_tag(:div, :class => "controls") do
-              super(field, *args) + errors_for(field)
+              super(field, *args) + help_block + errors_for(field)
             end
           end.html_safe
         end
