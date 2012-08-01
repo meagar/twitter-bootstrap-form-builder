@@ -28,19 +28,19 @@ module MNE
           # extract the options for the label tag
           opts = args.find { |a| a.is_a?(Hash) && a.has_key?(:label) }
           label_opts = opts ? opts[:label] : []
-                 
+
           # If label is false, we're rendering the field without modification
           return super(field, *args) if label_opts === false
-          
+
           # create a help-block if present
           help_opts = args.find { |a| a.is_a?(Hash) && a.has_key?(:help_block) }
           help_block = help_opts && help_opts[:help_block] ? @template.content_tag(:p, help_opts[:help_block], :class => "help-block") : ""
-                 
+
           # propogate properties of control group up
           h = args.find { |a| a.is_a?(Hash) && a.has_key?(:control_group) }
           control_group_opts = (h && h[:control_group]) || {}
           control_group_opts[:class] =  control_group_opts[:class] ?  control_group_opts[:class] + " #{method_name}" : "#{method_name}"
-          
+
           label_opts = Array[label_opts] << { :class => "control-label" }
 
           control_group(field, control_group_opts) do
