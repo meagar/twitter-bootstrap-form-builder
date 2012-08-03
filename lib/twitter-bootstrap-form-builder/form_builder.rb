@@ -82,8 +82,7 @@ module MNE
       end
 
       def extract_sub_options(opts, key = :label)
-        sub_opts = opts.keys.include?(key) ? opts[key] : []
-        opts.delete(key)
+        sub_opts = opts.keys.include?(key) ? opts.delete(key) : []
         return false if sub_opts === false
         return nil   if sub_opts.nil?
         Array(sub_opts)
