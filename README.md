@@ -99,6 +99,34 @@ the regular `FormBuilder#text_field`, use `:label => false`:
 <%= f.text_field :email, :label => false %> # <input type="text" id="post_email" />
 ```
 
+Checkboxes are a special case. They can contain two labels in a horizontal form, on to the left and
+one to the right.
+
+The left label uses the `:label` option and works as expected.
+
+The right label is controled by the `:about` option.
+
+Example:
+
+```erb
+<%= f.check_box :hide_email, :about => "Do not display my email in my post" %>
+```
+
+Produces the following HTML:
+
+```html
+<div class="control-group hide_email">
+	<label class="control-label" for="post_hide_email">Hide email</label>
+	<div class="controls">
+		<label class="checkbox" for="post_hide_email">
+			<input name="post[hide_email]" type="hidden" value="0" />
+			<input id="post_hide_email" name="post[hide_email]" type="checkbox" value="1" />
+			Do not display my email in my post
+		</label>
+	</div>
+</div>
+```
+
 ### Errors and validation
 
 The TwitterBootstrapFormBuilder relies on the dynamic_form gem to output inline error messages.
