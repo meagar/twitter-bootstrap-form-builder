@@ -1,4 +1,3 @@
-
 require 'dynamic_form'
 
 module MNE
@@ -53,7 +52,7 @@ module MNE
       end
 
       def errors_for(field)
-        @template.content_tag(:span, "#{object.class.human_attribute_name(field)} #{object.errors.messages[field].join(",")}",
+        @template.content_tag(:span, "#{object.class.human_attribute_name(field)} #{object.errors.messages[field].to_sentence}",
                               :class => "help-inline") if object.errors.messages[field].any?
       end
 
