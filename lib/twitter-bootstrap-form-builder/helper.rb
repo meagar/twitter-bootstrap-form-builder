@@ -2,18 +2,18 @@
 module MNE
   module TwitterBootstrapFormBuilder
     module Helper
-      def form_for (*args)
-        args << {} unless args.last.is_a? Hash
+      def form_for (record, options = {}, &proc)
+        return super(record, options, &proc) if options.delete(:bootstrap) === false
 
-        args.last[:builder] ||= MNE::TwitterBootstrapFormBuilder::FormBuilder
-        args.last[:html] ||= {}
-        args.last[:html][:class] ||= ""
+        options[:builder] ||= MNE::TwitterBootstrapFormBuilder::FormBuilder
+        options[:html] ||= {}
+        options[:html][:class] ||= ""
 
-        if !args.last[:html][:class].match(/form-(horizontal|vertical)/)
-          args.last[:html][:class] = ["form-horizontal", args.last[:html][:class]].join(" ")
+        if !options[:html][:class].match(/form-(horizontal|vertical)/)
+          options[:html][:class] = ["form-horizontal", options[:html][:class]].join(" ")
         end
 
-        super
+        super(record, options, &proc)
       end
     end
   end

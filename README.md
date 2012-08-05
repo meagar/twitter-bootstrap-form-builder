@@ -88,11 +88,17 @@ If you need to override the text of the label, use `:label`:
 <%= f.text_field :email, :label => "Email Address" %>
 ```
 
-If you want to turn off the helper entirely and output *just* the text field, exactly as if you were calling
-the regular `FormBuilder#text_field`, use `:label => false`:
+If you want to turn off the helper entirely for one field and output *just* the input/select/textarea element,
+exactly as if you were calling the regular `FormBuilder#text_field`, use `:label => false`:
 
 ```erb
 <%= f.text_field :email, :label => false %> # <input type="text" id="post_email" />
+```
+
+To disable the Bootstrap FormBuilder for an entire form, use `:bootstrap => false` with `form_for`:
+
+```erb
+<%= form_for @post, :bootstrap => false do |f| %>
 ```
 
 To render the field within the Bootstrap control-group markup but without a label tag,
