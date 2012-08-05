@@ -107,7 +107,7 @@ module MNE
         if opts.keys.include?(key)
           sub_opts = opts.delete(key)
 
-          return [sub_opts.merge(defaults)] if sub_opts.is_a? Hash
+          return [defaults.merge(sub_opts)] if sub_opts.is_a? Hash
           return [sub_opts, defaults] if sub_opts.is_a? String
 
           # If we were explicitly given an array, we're done.
