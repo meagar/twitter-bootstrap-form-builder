@@ -21,6 +21,16 @@ module MNE
         end
       end
 
+      # Wrappers around the various *_fields method which include the markup needed
+      # to make a pretty Twitter Bootstrap form
+      #
+      # Options:
+      #   :label => ...
+      #     String - Specify the text of the label
+      #     Array  - Specify all arguments to pass to label_tag
+      #     nil    - No label, but maintain the rest of the Bootstrap markup
+      #     false  - Fallback to FormBuilder's implementation (no Bootstrap markup at all)
+      #   :help_block => String - Add help sub-text to the field
       %w(text_field phone_field password_field email_field number_field file_field text_area select).each do |method_name|
         define_method method_name.to_sym do |field, *args|
 
@@ -49,6 +59,10 @@ module MNE
 
 
       # Special handling for check boxes, which can have two labels
+      #
+      # Options
+      #   :label - As the *_field methods
+      #   :text - Like :label but for the right-hand label
       def check_box(field, options = {}, checked_value = "1", unchecked_value = "0")
         label_tag = build_label_tag(field, options)
 
@@ -74,6 +88,24 @@ module MNE
             text_tag.html_safe + errors_for(field)
           end.html_safe
         end.html_safe
+      end
+
+      # Very light wrapper around FormBuilder#submit which adds a 'btn' class
+      #
+      # Options:
+      #   :label => false - fall back to FormBuilder#submit
+      #   :primary => true - add btn-primary class
+      def submit(value = nil, options = {})
+
+        if options[:label] === false
+          options.delete(:label)
+          return super
+        end
+
+        options[:class] = "#{options[:class]} btn"
+        options[:class] = "#{options[:class]} btn-primary" if options[:primary]
+
+        super(value, options)
       end
 
       protected
