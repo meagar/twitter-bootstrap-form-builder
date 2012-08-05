@@ -3,10 +3,6 @@
 A gem for building **horizontal** (vertial/search/inline coming soon) Twitter Bootstrap forms, automagically handling the
 control-group markup, field labels and inline-error messages.
 
-## Changes
-
-This fork displays error messages with .to_sentence instead of .join(',')
-
 ## Installation
 
 Add this line to your application's Gemfile:
