@@ -3,10 +3,10 @@ require File.expand_path('../lib/twitter-bootstrap-form-builder/version', __FILE
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Matthew Eagar"]
-  gem.email         = ["matthew.eagar@mosaic.com"]
-  gem.description   = "Twitter Bootstrap form_for" 
-  gem.summary       = "Twitter Bootstrap form_for"
-  gem.homepage      = ""
+  gem.email         = ["me@meagar.net"]
+  gem.description   = "Build bootstrapped forms with next to no effort"
+  gem.summary       = "Twitter Bootstrap FormBuilder"
+  gem.homepage      = "http://meagar.github.com/twitter-bootstrap-form-builder/"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
