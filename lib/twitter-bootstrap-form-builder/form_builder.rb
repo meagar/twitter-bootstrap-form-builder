@@ -103,7 +103,7 @@ module MNE
         end
 
         options[:class] = "#{options[:class]} btn"
-        options[:class] = "#{options[:class]} btn-primary" if options[:primary]
+        options[:class] = "#{options[:class]} btn-primary" if options.delete(:primary)
 
         super(value, options)
       end
