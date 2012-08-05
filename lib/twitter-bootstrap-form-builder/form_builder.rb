@@ -33,7 +33,7 @@ module MNE
           return super(field, *args) if label_tag === false
 
           # create a help-block if present
-          help_block = opts[:help_block] ? @template.content_tag(:p, opts[:help_block], :class => "help-block") : ""
+          help_block = opts[:help_block] ? @template.content_tag(:p, opts.delete(:help_block), :class => "help-block") : ""
 
           # propogate properties of control group up
           control_group_opts = opts[:control_group] || {}
@@ -61,15 +61,17 @@ module MNE
         control_group(field, control_group_opts) do
           label_tag + @template.content_tag(:div, :class => "controls") do
 
-            check_box_tag = super(field, options, checked_value, unchecked_value).html_safe
+            opts = options.clone
+            opts[:text] = nil
+            check_box_tag = super(field, opts, checked_value, unchecked_value).html_safe
 
-            about_tag = build_label_tag(field, options, :text, {:class => "checkbox"}) do |opts|
-              check_box_tag + opts[0].html_safe
+            text_tag = build_label_tag(field, options, :text, {:class => "checkbox"}) do |opts|
+              "#{check_box_tag} #{opts[0]}".html_safe
             end
 
-            about_tag ||= @template.content_tag(:label, check_box_tag, :class => "checkbox")
+            text_tag ||= @template.content_tag(:label, check_box_tag, :class => "checkbox")
 
-            about_tag.html_safe + errors_for(field)
+            text_tag.html_safe + errors_for(field)
           end.html_safe
         end.html_safe
       end
