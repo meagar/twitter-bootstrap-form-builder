@@ -99,17 +99,24 @@ the regular `FormBuilder#text_field`, use `:label => false`:
 <%= f.text_field :email, :label => false %> # <input type="text" id="post_email" />
 ```
 
+To render the field within the Bootstrap control-group markup but without a label tag,
+use `:label => nil`:
+
+```erb
+<%= f.text_field :email, :label => nil %>
+```
+
 Checkboxes are a special case. They can contain two labels in a horizontal form, on to the left and
 one to the right.
 
 The left label uses the `:label` option and works as expected.
 
-The right label is controled by the `:about` option.
+The right label is controled by the `:text` option.
 
 Example:
 
 ```erb
-<%= f.check_box :hide_email, :about => "Do not display my email in my post" %>
+<%= f.check_box :hide_email, :text=> "Do not display my email in my post" %>
 ```
 
 Produces the following HTML:
