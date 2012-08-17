@@ -14,7 +14,7 @@ module MNE
         opts[:class] << "control-group"
         opts[:class] << field if field
 
-        opts[:class] << "error" if @object.errors.messages.has_key?(field) && @object.errors.messages[field].any?
+        opts[:class] << "error" if @object && @object.errors.messages.has_key?(field) && @object.errors.messages[field].any?
 
         @template.content_tag(:div, opts) do
           @template.capture &block
@@ -165,7 +165,7 @@ module MNE
 
       def errors_for(field)
         @template.content_tag(:span, "#{object.class.human_attribute_name(field)} #{object.errors.messages[field].to_sentence}",
-                              :class => "help-inline") if object.errors.messages.has_key?(field) && object.errors.messages[field].any?
+                              :class => "help-inline") if object && object.errors.messages.has_key?(field) && object.errors.messages[field].any?
       end
 
     end
