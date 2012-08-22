@@ -12,7 +12,7 @@ module MNE
         # wrap in array if not an array
         opts[:class] = Array(opts[:class])
         opts[:class] << "control-group"
-        opts[:class] << field if field
+        opts[:class] << field.to_s.gsub(/[^-_a-zA-Z0-9]/, "") if field
 
         opts[:class] << "error" if @object && @object.errors.messages.has_key?(field) && @object.errors.messages[field].any?
 
