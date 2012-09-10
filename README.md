@@ -24,7 +24,7 @@ Or install it yourself as:
 ```ruby
 module ApplicationHelper
   # Replace form_for
-  include MNE::TwitterBootstrapFormBuilder
+  include MNE::TwitterBootstrapFormBuilder::Helper
 end
 ```
 
