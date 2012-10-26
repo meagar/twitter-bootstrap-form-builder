@@ -32,7 +32,7 @@ module MNE
       #     nil    - No label, but maintain the rest of the Bootstrap markup
       #     false  - Fallback to FormBuilder's implementation (no Bootstrap markup at all)
       #   :help_block => String - Add help sub-text to the field
-      %w(text_field phone_field password_field email_field number_field file_field text_area select collection_select date_select datetime_select).each do |method_name|
+      %w(text_field phone_field password_field email_field number_field file_field text_area select collection_select date_select datetime_select time_select).each do |method_name|
         define_method method_name.to_sym do |field, *args|
 
           # find the options hash, and extract the options for the label tag
